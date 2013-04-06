@@ -169,6 +169,7 @@ DEPENDENCIES
   acts-as-taggable-on (~> 2.3.1)
   auto_html
   aws-sdk (~> 1.5.7)
+  cocaine
   coffee-rails (~> 3.2.1)
   devise
   haml
