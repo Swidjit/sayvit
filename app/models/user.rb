@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   #validates_presence_of :first_name, :last_name, :display_name
   #validates :display_name, :presence => true, :format => { :with => /^[a-zA-Z0-9]+$/, :message => 'can contain only letters and numbers - no spaces or symbols' }
   #validates_uniqueness_of :display_name, :case_sensitive => false
+
+  has_many :posts
   
   def active_for_authentication? 
     super 

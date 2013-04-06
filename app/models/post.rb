@@ -1,3 +1,4 @@
 class Post < ActiveRecord::Base
-  attr_accessible :post_time, :title, :user_id
+  attr_accessible :title
+  belongs_to :user
 end
