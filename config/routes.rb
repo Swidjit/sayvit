@@ -11,8 +11,16 @@ Sayvit::Application.routes.draw do
   end 
 
   get "user/show"
+  
+  resource :feeds, :only => [] do
+      member do
+        get 'home'
+      end
+    end
 
   resources :posts
+  
+  root :to => 'feeds#home'
 
 
   # The priority is based upon order of creation:

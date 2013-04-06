@@ -46,6 +46,8 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    haml (4.0.2)
+      tilt
     hike (1.2.1)
     i18n (0.6.4)
     journey (1.0.4)
@@ -59,11 +61,8 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.22)
     multi_json (1.7.2)
-
     orm_adapter (0.4.0)
-
     pg (0.15.0)
-
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -118,6 +117,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
+  haml
   jquery-rails
   pg
   rails (= 3.2.6)

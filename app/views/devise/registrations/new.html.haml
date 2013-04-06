@@ -1,0 +1,69 @@
+#register_form
+  = form_for(@user, :url => registration_path(User)) do |f|
+    .col-60
+      %h2 register for sayv.it
+      %p<
+        To join, just fill out this form with some basic details. 
+      %fieldset
+        .red
+          %h4 By default, registration is as an individual.  To sign up as a business or organization, select the box below
+        .form-row.clearfix
+          
+        .form-row.clearfix
+          = f.label :first_name
+          = f.text_field :first_name, :type => "text", :id => "user_first_name"
+        .form-row.clearfix  
+          = f.label :last_name
+          = f.text_field :last_name,  :id => "user_last_name"
+      
+        .form-row.clearfix
+      
+          = f.label :display_name
+    
+          
+          = f.text_field :display_name, :onkeypress=>"return inputLimiter(event,'Letters')", :id => "user_display_name"
+          .clearboth
+          .form-hints
+            this is your public username (@DisplayName) and profile url (sayv.it/DisplayName).  
+            %span.bold
+              we strongly encourage that you use your first & last name (or organization name) but it is not required.  
+      
+        .form-row.clearfix
+          = f.label :email
+          = f.email_field :email
+        .form-row.clearfix
+      
+          = f.label :password
+          = f.password_field :password
+        .form-row.clearfix
+          = f.label :password_confirmation
+          = f.password_field :password_confirmation
+     
+        .form-row
+          = f.submit 'Sign Up'
+    .col-40
+
+      
+:javascript
+  function updateSuggestion(business, e) {
+    var oldSuggestion;
+    
+    oldSuggestion = $('#user_first_name').val().replace(/\s+/g,'')+$('#user_last_name').val().replace(/\s+/g,'');
+    
+    var dispName = $('#user_display_name').val();
+    if (dispName == '' || dispName == oldSuggestion) {
+      window.setTimeout(function() {
+        if (business) {
+          var newSuggestion = $('#user_business_name').val().replace(/\s+/g,'');
+        } else {
+          var newSuggestion = $('#user_first_name').val().replace(/\s+/g,'')+$('#user_last_name').val().replace(/\s+/g,'');
+        }
+        $('#user_display_name').val(newSuggestion);
+      }, 1);
+    }
+  }
+  $(document).ready(function() {
+    $('#user_first_name').keydown(updateSuggestion.bind(null, false));
+    $('#user_last_name').keydown(updateSuggestion.bind(null, false));
+  });    
+  
