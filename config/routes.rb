@@ -1,4 +1,16 @@
 Sayvit::Application.routes.draw do
+  
+  devise_for :users, :controllers => { :registrations => "registrations",
+      :omniauth_callbacks => "omniauth_callbacks" }, :path_names => { :sign_in => "sign_in", :sign_out => "logout", :sign_up => "register" } do
+        
+  
+    match "sign_in" => "devise/sessions#new", :as => :new_user_session 
+    match "logout" => "devise/sessions#destroy", :as => :destroy_user_session
+    match "register" => "devise/registrations#new", :as => :new_user_registration
+  end 
+
+  get "user/show"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

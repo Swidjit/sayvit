@@ -1,0 +1,42 @@
+
+#login_form
+  = form_for(@user, :url => session_path(User)) do |f|
+  
+    %h1
+      %strong welcome to swidjit. 
+      please login.
+
+    %fieldset
+      %p
+        =f.label "email address"
+        = f.email_field :email, :onblur => "if(this.value=='')this.value='email address'", :onfocus => "if(this.value=='email address')this.value='' ", :required => "", :type => "text"
+      / JS because of IE support; better: placeholder="Username"
+      %p
+        =f.label "password"
+        = f.password_field :password, :onblur => "if(this.value=='')this.value='password'", :onfocus => "if(this.value=='password')this.value='' ", :required => "", :type => "password"
+      / JS because of IE support; better: placeholder="Password"
+      %p
+        = link_to 'Forgot your password?', new_password_path(User)
+        %br
+        = link_to 'No account?  Register now!', new_user_registration_path
+      %p
+        = f.submit 'Sign in'
+      - if flash[:alert]
+        #flash_alert= flash[:alert]           
+    %p
+      %span.btn-round or
+    %p
+      .fb-login-button{'onlogin' => 'jfb_js_login_callback()', 'data-scope' => 'email,user_location'}
+        Login Using Facebook
+/ end login  
+
+
+:javascript
+  function jfb_js_login_callback() {
+    //Make sure the user logged in
+    FB.getLoginStatus(function(response){
+      if (response.authResponse){
+        window.location = '#{user_omniauth_authorize_path(:facebook)}';
+      }
+    });
+  }

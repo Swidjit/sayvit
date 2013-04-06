@@ -1,0 +1,120 @@
+#register_form
+  = form_for(@user, :url => registration_path(User)) do |f|
+    .col-60
+      %h2 register for swidjit
+      %p<
+        To join, just fill out this form with some basic details. 
+        =link_to "  Learn why we ask for this information.", pages_path(:page_name => 'privacy-policy')
+      %fieldset
+        = f.error_messages :header_message => 'The following errors need to be fixed:', :message => ''
+        .red
+          %h4 By default, registration is as an individual.  To sign up as a business or organization, select the box below
+        .form-row.clearfix
+          
+          .form-left
+            .checkbox
+              = f.check_box :is_business, {:id => 'is_business_signup'}
+              = f.label :is_business, 'This account is for a business or organization'
+        .form-row.clearfix
+          #business_name.hidden
+            = f.label :business_name, 'Business or Organization Name'
+            = f.text_field :business_name
+        .form-row.clearfix
+          = f.label :first_name
+          = f.text_field :first_name, :type => "text", :id => "user_first_name"
+        .form-row.clearfix  
+          = f.label :last_name
+          = f.text_field :last_name,  :id => "user_last_name"
+      
+        .form-row.clearfix
+      
+          = f.label :display_name
+    
+          
+          = f.text_field :display_name, :onkeypress=>"return inputLimiter(event,'Letters')", :id => "user_display_name"
+          .clearboth
+          .form-hints
+            this is your public username (@DisplayName) and profile url (swidjit.com/DisplayName).  
+            %span.bold
+              we strongly encourage that you use your first & last name (or organization name) but it is not required.  
+      
+        .form-row.clearfix
+          = f.label :email
+          = f.email_field :email
+        .form-row.clearfix
+      
+          = f.label :password
+          = f.password_field :password
+        .form-row.clearfix
+          = f.label :password_confirmation
+          = f.password_field :password_confirmation
+        .form-row.clearfix
+          = f.label :zipcode
+          = f.text_field :zipcode
+        .form-row.clearfix
+          .form-left  
+            .checkbox
+              = f.check_box :is_thirteen
+              = f.label :is_thirteen, 'I am at least 13 years of age'
+      
+        .form-row
+          = f.submit 'Sign Up'
+    .col-40
+
+
+      %h4 register via facebook
+      If you'd like, you can register easily through Facebook
+      .fb-login-button{'onlogin' => 'jfb_js_login_callback()', 'data-scope' => 'email,user_location'} Sign in with Facebook 
+
+      %div{:style => "background-color:#f5fdc2; margin-top: 20px; padding: 7px; border: 1px solid gray"}
+        %h4 why join swidjit?
+        as a guest, you can browse a lot of the public content, but creating a free account will let you do so much more
+          
+        %ul
+          %li sell, trade and share your stuff
+          %li request the goods, services and info you need 
+          %li curate local products, services, deals and info
+      
+          %li discuss and collaborate with your groups
+          %li promote, track and share local events
+          %li make public announcements or press release    
+        
+:javascript
+  function updateSuggestion(business, e) {
+    var oldSuggestion;
+    if (business) {
+      oldSuggestion = $('#user_business_name').val().replace(/\s+/g,'');
+    }
+    else {
+      oldSuggestion = $('#user_first_name').val().replace(/\s+/g,'')+$('#user_last_name').val().replace(/\s+/g,'');
+    }
+    var dispName = $('#user_display_name').val();
+    if (dispName == '' || dispName == oldSuggestion) {
+      window.setTimeout(function() {
+        if (business) {
+          var newSuggestion = $('#user_business_name').val().replace(/\s+/g,'');
+        } else {
+          var newSuggestion = $('#user_first_name').val().replace(/\s+/g,'')+$('#user_last_name').val().replace(/\s+/g,'');
+        }
+        $('#user_display_name').val(newSuggestion);
+      }, 1);
+    }
+  }
+  $(document).ready(function() {
+    $('#user_first_name').keydown(updateSuggestion.bind(null, false));
+    $('#user_last_name').keydown(updateSuggestion.bind(null, false));
+    $('#user_business_name').keydown(updateSuggestion.bind(null, true));
+
+    $('#is_business_signup').change(function() {
+      $('#business_name').toggle();
+    });
+  });    
+  
+  function jfb_js_login_callback() {
+    //Make sure the user logged in
+    FB.getLoginStatus(function(response){
+      if (response.authResponse){
+        window.location = '#{user_omniauth_authorize_path(:facebook)}';
+      }
+    });
+  }
