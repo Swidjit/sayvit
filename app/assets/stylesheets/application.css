@@ -14,3 +14,99 @@
 body {
 	background-color: #53777A;
 }
+
+#header {
+  background: #53777A;
+  position: absolute;
+  height: 75px;
+  width: 100%;
+	
+}
+
+#logo {
+  background: url('logo.png') no-repeat 6px 20px;
+  position: absolute;
+  height: 75px;
+  width: 120px;
+	
+}
+#left_sidebar {
+  background-color: #53777A;
+  position: absolute;
+  height: 100%;
+  width: 120px;
+  top: 75px;
+	
+}
+
+#post_button {
+	position: absolute;
+  	height: 30px;
+  	width: 200px;
+  	right: 10px;
+  	padding: 10px;
+  	top: 10px;
+  	background-color: #53007B;
+}
+
+#main_content {
+	position: absolute;
+  	height: 100%;
+  	right: 0px;
+  	
+  	left: 120px;
+  	padding: 20px;
+  	top: 75px;
+  	background-color: #53777A;	
+}
+
+#tagline {
+	position: absolute;
+	left: 120px;
+	top: 20px;
+	
+}
+
+#home_button {
+	background: url('home.svg') no-repeat 20px 0px;
+	background-size: 75px;
+	height: 100px;
+	width: 100px;
+	display: block;
+}
+#popular_button {
+	background: url('popular.svg') no-repeat 20px 0px;
+	background-size: 75px;
+	height: 100px;
+	width: 100px;
+	display: block;
+}
+#scrapbooks_button {
+	background: url('scrapbook.svg') no-repeat 20px 0px;
+	background-size: 75px;
+	height: 100px;
+	width: 100px;
+	display: block;
+}
+#archives_button {
+	background: url('archives.svg') no-repeat 20px 0px;
+	background-size: 75px;
+	height: 100px;
+	width: 100px;
+	display: block;
+}
+#profile_button {
+	background: url('profile.svg') no-repeat 20px 0px;
+	background-size: 75px;
+	height: 100px;
+	width: 100px;
+	display: block;
+}
+
+.digest {
+	width: 30%;
+}
+.digest_heading {
+	background-color: #ECD078;
+	height: 40px;
+}
