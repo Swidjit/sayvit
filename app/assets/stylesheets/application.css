@@ -104,8 +104,11 @@ body {
 }
 
 .digest {
-	width: 30%;
-	
+	width: 300px;
+	float: left;
+	position: relative;
+	margin-right: 15px;
+	margin-bottom: 30px;
 }
 
 .digest input[type="submit"] {
@@ -130,4 +133,34 @@ body {
 	top: -17px;
 	left: 5px;
 	display:inline;
+}
+
+.item_collect {
+	background: #20202F url('scrapbook.svg') no-repeat 15px 3px;
+	background-size: 25px;
+	width: 60px;
+	height: 30px;
+	float: left;
+	position: absolute;
+	left: 0px;
+	margin-top: 3px;
+	
+}
+.item_borrow {
+	background: #20202F url('scrapbook.svg') no-repeat 15px 3px;
+	background-size: 25px;
+	width: 60px;
+	height: 30px;
+	position: absolute;
+	left: 240px;
+	margin-top: 3px;
+}
+.item_ranking {
+	background-color: #C02942;
+	width: 180px;
+	height: 30px;
+	position: absolute;
+	left: 60px;
+	margin-top: 3px;
+	
 }

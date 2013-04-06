@@ -2,7 +2,8 @@
   .digest
     .digest_heading
       %h3
-        =post.title 
+        =link_to post.title, post_path(post)
+
     .digest_body
       -if post.content.present?
         =post.content
@@ -34,7 +35,12 @@
           =render( :partial => 'posts/labels', :locals => {:label => "fun", :label_class => "inactive", :post => post})
         .label-count
           #count-fun
-            =Post.recently_labeled("fun").count  
+            =Post.recently_labeled("fun").count 
+        
+    .item_collect
+      
+    .item_ranking
+    .item_borrow
   
 		  		 
 	
