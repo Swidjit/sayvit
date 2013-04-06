@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
 
   belongs_to :user
   has_attached_file :image, :styles => {:thumb => 'x100', :croppable => '600x600>', :big => '1000x1000>',
-                      :path => "/:class/images/:id_:basename.:style.:extension"}
+                      :path => ":rails_root/public/images/:image-:style.:extension"}
 
   has_many :labels
   
@@ -11,7 +11,9 @@ class Post < ActiveRecord::Base
     joins(:labels).where(["#{Label.table_name}.label = ?", type])
   }
 
-
+  Paperclip.interpolates :image do |attachment, style|
+    attachment.instance.image
+  end
   ## acts_as_taggable
 
   auto_html_for :body do
