@@ -1,6 +1,8 @@
 Sayvit::Application.routes.draw do
 
   
+  resources :posts
+
   devise_for :users, :controllers => { :registrations => "registrations",
       :omniauth_callbacks => "omniauth_callbacks" }, :path_names => { :sign_in => "sign_in", :sign_out => "logout", :sign_up => "register" } do
         
@@ -10,7 +12,7 @@ Sayvit::Application.routes.draw do
     match "register" => "devise/registrations#new", :as => :new_user_registration
   end 
 
-  get "user/show"
+  resources :users, :only => [:show]
   
   resource :feeds, :only => [] do
       member do
@@ -18,9 +20,11 @@ Sayvit::Application.routes.draw do
       end
     end
 
+
   resources :posts
   
   root :to => 'feeds#home'
+
 
 
   # The priority is based upon order of creation:
