@@ -3,7 +3,7 @@
   = form_for(@user, :url => session_path(User)) do |f|
   
     %h1
-      %strong welcome to swidjit. 
+      %strong welcome to sayvit 
       please login.
 
     %fieldset
@@ -31,12 +31,4 @@
 / end login  
 
 
-:javascript
-  function jfb_js_login_callback() {
-    //Make sure the user logged in
-    FB.getLoginStatus(function(response){
-      if (response.authResponse){
-        window.location = '#{user_omniauth_authorize_path(:facebook)}';
-      }
-    });
-  }
+
