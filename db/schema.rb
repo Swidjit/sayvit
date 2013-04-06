@@ -11,24 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20130406160229) do
+ActiveRecord::Schema.define(:version => 20130406191537) do
 
-  create_table "posts", :force => true do |t|
-    t.string   "user_id"
-    t.datetime "post_time"
-    t.string   "title"
+  create_table "feeds", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-=======
-ActiveRecord::Schema.define(:version => 20130406164200) do
+  end
 
   create_table "posts", :force => true do |t|
     t.string   "title"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "user_id"
+    t.string   "content"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  create_table "text_boxes", :force => true do |t|
+    t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "user_id"
->>>>>>> a45b9c10d4e247b6d52a21c42d6331fc33c0e50d
   end
 
   create_table "users", :force => true do |t|
