@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem "auto_html"
 gem 'rails', '3.2.6'
 gem 'devise'
 gem 'haml'
@@ -21,6 +22,7 @@ end
 
 group :production do
 	gem 'pg'
+	gem 'aws-sdk', '~> 1.5.7'
 end
 
 # Gems used only for assets and not required

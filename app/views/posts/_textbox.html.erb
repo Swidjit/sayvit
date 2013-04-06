@@ -1,0 +1,12 @@
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="textboxLabel">Create a New Text Post</h3>
+  </div>
+  <div class="modal-body">
+    <%= f.input :title %>
+    <%= f.input :content, as: :text, input_html: { rows: "10" } %>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <%= f.submit :success %>
+  </div>
