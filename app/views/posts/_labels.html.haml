@@ -1,0 +1,10 @@
+= form_for Label.new, :remote=> "true", :id => "label-form" do |f|
+  = f.hidden_field :label, :value => "#{label}"
+  = f.hidden_field :post_id, :value => post.id
+  = f.submit "#{label}", :class => "#{label_class}", :id => "label-btn-#{label}"
+
+
+
+
+
+

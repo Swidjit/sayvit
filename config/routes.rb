@@ -1,6 +1,12 @@
 Sayvit::Application.routes.draw do
 
   
+  resources :labels, :only => [:destroy, :create] do
+    member do
+        post :toggle
+    end
+  end 
+
   resources :posts
 
   devise_for :users, :controllers => { :registrations => "registrations",

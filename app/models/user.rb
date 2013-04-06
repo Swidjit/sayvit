@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   #validates_uniqueness_of :display_name, :case_sensitive => false
 
   has_many :posts
+  has_many :labels
   
   def active_for_authentication? 
     super 

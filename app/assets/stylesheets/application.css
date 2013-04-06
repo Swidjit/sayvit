@@ -105,8 +105,29 @@ body {
 
 .digest {
 	width: 30%;
+	
+}
+
+.digest input[type="submit"] {
+	margin-right: 20px;
 }
 .digest_heading {
 	background-color: #ECD078;
 	height: 40px;
+	padding: 0px 12px 3px;
+}
+
+.digest_body {
+	padding: 12px;
+	font-size: 18px;
+	background-color: #20202F;
+	color: #ccc;
+}
+
+.label-count {
+	float:left;
+	position: relative;
+	top: -17px;
+	left: 5px;
+	display:inline;
 }

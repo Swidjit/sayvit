@@ -1,6 +1,40 @@
 -@feed_posts.each do |post|
-	.digest
-		.digest_heading
-			%h2
-				=post.title  
+  .digest
+    .digest_heading
+      %h3
+        =post.title 
+    .digest_body
+      -if post.content.present?
+        =post.content
+        -if signed_in? && Label.exists?(:user_id => current_user.id, :post_id => post.id, :label => "awesome")
+          =render(:partial => 'posts/labels', :locals => {:label => "awesome", :label_class => "active", :post => post})
+        
+        -else
+          =render( :partial => 'posts/labels', :locals => {:label => "awesome", :label_class => "inactive", :post => post})
+        .label-count
+          #count-awesome
+            =Post.recently_labeled("awesome").count
+        -if signed_in? && Label.exists?(:user_id => current_user.id, :post_id => post.id, :label => "important")
+          =render( :partial => 'posts/labels', :locals => {:label => "important", :label_class => "active", :post => post})
+        -else
+          =render( :partial => 'posts/labels', :locals => {:label => "important", :label_class => "inactive", :post => post})
+        .label-count
+          #count-important
+            =Post.recently_labeled("important").count
+        -if signed_in? && Label.exists?(:user_id => current_user.id, :post_id => post.id, :label => "useful")
+          =render( :partial => 'posts/labels', :locals => {:label => "useful", :label_class => "active", :post => post})
+        -else
+          =render( :partial => 'posts/labels', :locals => {:label => "useful", :label_class => "inactive", :post => post})
+        .label-count
+          #count-useful
+            =Post.recently_labeled("useful").count
+        -if signed_in? && Label.exists?(:user_id => current_user.id, :post_id => post.id, :label => "fun")
+          =render( :partial => 'posts/labels', :locals => {:label => "fun", :label_class => "active", :post => post})
+        -else
+          =render( :partial => 'posts/labels', :locals => {:label => "fun", :label_class => "inactive", :post => post})
+        .label-count
+          #count-fun
+            =Post.recently_labeled("fun").count  
+  
+		  		 
 	

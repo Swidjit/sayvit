@@ -1,0 +1,4 @@
+$("#count-#{@label.label}").html('#{escape_javascript @counter}');
+$("#label-output").html('#{escape_javascript @notice}');
+
+$("#label-btn-#{@label.label}").toggleClass('active');
