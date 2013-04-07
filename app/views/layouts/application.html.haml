@@ -27,7 +27,8 @@
       #popular_button
       #scrapbooks_button
       #archives_button
-      #profile_button
+      =link_to user_path(current_user) do
+        #profile_button
       = link_to 'logout',  destroy_user_session_path
     #main_content
       = yield

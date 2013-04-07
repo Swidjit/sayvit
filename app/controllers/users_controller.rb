@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_filter :load_resource, :only => :show
   
   def show
-    
+    @feed_posts = @user.posts
   end
   
   private

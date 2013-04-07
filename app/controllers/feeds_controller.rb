@@ -1,7 +1,12 @@
 class FeedsController < ApplicationController
   
   def home
-    @feed_posts = Post.all
+    if params[:tag].present?
+      @feed_posts = Post.tagged_with(params[:tag])
+    else
+      @feed_posts = Post.all 
+    end
+    
   end
   
 end

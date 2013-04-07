@@ -37,10 +37,17 @@
           #count-fun
             =Post.recently_labeled("fun").count 
         
-    .item_collect
+    =link_to "#", :data => { :id=> post.id} do
+      .item_collect
       
     .item_ranking
     .item_borrow
   
+:javascript
+  $(document).ready(function() {
+    $('a .item_collect').click(function() {
+      var id = $(this).parent().data('id');
+    });
+  });
 		  		 
 	
