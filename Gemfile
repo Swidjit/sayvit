@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem "cocaine"
 gem "auto_html"
 gem 'rails', '3.2.6'
 gem 'devise'

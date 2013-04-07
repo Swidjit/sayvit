@@ -3,8 +3,7 @@ class Post < ActiveRecord::Base
 
   belongs_to :user
   has_attached_file :image, :styles => {:thumb => 'x100', :croppable => '600x600>', :big => '1000x1000>',
-                      :url => ":s3_domain_url",
-                      :path => "/:class/images/:id_:basename.:style.:extension"}
+                      :path => ":rails_root/public/images/:image-:style.:extension"}
 
   has_many :labels
   
@@ -13,7 +12,14 @@ class Post < ActiveRecord::Base
   }
 
 
+
   acts_as_taggable
+
+
+  Paperclip.interpolates :image do |attachment, style|
+    attachment.instance.image
+  end
+
 
 
 
