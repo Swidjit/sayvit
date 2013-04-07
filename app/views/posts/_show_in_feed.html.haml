@@ -36,7 +36,9 @@
         .label-count
           #count-fun
             =Post.recently_labeled("fun").count 
-        
+      -post.tags.each do |tag|
+        .tag
+          =link_to "##{tag}", root_path(tag: tag.name)   
     =link_to "#", :data => { :id=> post.id} do
       .item_collect
       
